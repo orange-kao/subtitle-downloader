@@ -1,0 +1,33 @@
+#!/bin/bash
+set -e -x
+
+# Cleanup
+rm -f subtitle-downloader.zip
+rm -fR subtitle-downloader
+
+
+# validate 3rd party lib
+cd third-party-lib
+sha512sum -c sha512
+cd ..
+
+
+# Pakcage a new one
+cp -a scripts subtitle-downloader
+
+cd subtitle-downloader/lib
+
+cp ../../third-party-lib/youtube-dl .
+
+7z x ../../third-party-lib/ffmpeg-4.2.1-win64-static.zip
+mv ffmpeg-4.2.1-win64-static ffmpeg
+
+mkdir python3
+cd python3
+7z x ../../../third-party-lib/python-3.8.1-embed-amd64.zip
+cd ..
+
+cd ../..
+
+7z a -tzip -mx=9 subtitle-downloader.zip subtitle-downloader
+
