@@ -38,6 +38,7 @@ def print_banner(message):
 def update_youtube_dl():
     print_banner("Update in progress.\nPlease wait")
 
+    print("youtube-dl version:")
     subprocess.run([
             "python", "lib\youtube-dl",
             "--version"
@@ -100,6 +101,10 @@ def open_file_with_notepad(txt_filename):
             "notepad",
             txt_filename
         ])
+
+print("main.py version: ", end="")
+with open("lib\main-ver", "r") as f:
+    print(f.read().rstrip())
 
 if len(sys.argv) == 2 and sys.argv[1] == "--update":
     update_youtube_dl()

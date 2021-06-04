@@ -29,5 +29,9 @@ cd ..
 
 cd ../..
 
+# tag version
+git describe --dirty > subtitle-downloader/lib/main-ver
+
+# pack
 7z a -tzip -mx=9 subtitle-downloader.zip subtitle-downloader
 
