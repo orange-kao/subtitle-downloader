@@ -16,7 +16,9 @@ def lrc2txt(lrc_filename, txt_filename):
         prev_line = ""
         for count, line in enumerate(lrc):
             line = line.strip()
-            line = re.sub("\A\[[0-9:.]+\]", "", line)
+            line = re.sub(r"\A\[[0-9:.]+\]", "", line)
+            line = re.sub(r"\\h\Z", "", line)
+            line = re.sub(r"\\h\Z", "", line)
 
             if line != "" and line != prev_line:
                 txt.write(line + "\n")
@@ -53,7 +55,7 @@ def download_audio(youtube_url):
             "python", "lib\youtube-dl",
             "--output", "%(id)s.%(ext)s", "--restrict-filenames",
             "-f", "bestaudio",
-            "--write-auto-sub", "--convert-subs", "lrc",
+            "--write-sub", "--write-auto-sub", "--convert-subs", "lrc",
             youtube_url
         ])
     return p.returncode

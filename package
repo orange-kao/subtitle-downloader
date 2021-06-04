@@ -19,12 +19,12 @@ cd subtitle-downloader/lib
 
 cp ../../third-party-lib/youtube-dl .
 
-7z x ../../third-party-lib/ffmpeg-4.2.1-win64-static.zip
-mv ffmpeg-4.2.1-win64-static ffmpeg
+7z x ../../third-party-lib/ffmpeg-release-essentials.7z
+mv ffmpeg-4.4-essentials_build ffmpeg
 
 mkdir python3
 cd python3
-7z x ../../../third-party-lib/python-3.8.1-embed-amd64.zip
+7z x ../../../third-party-lib/python-3.9.5-embed-amd64.zip
 cd ..
 
 cd ../..
